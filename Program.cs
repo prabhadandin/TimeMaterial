@@ -17,10 +17,10 @@ namespace IC_TimeMaterial
             IWebDriver driver = new ChromeDriver();
             //Maximize the browser
             driver.Manage().Window.Maximize();
-            //Launch turnup portal
+            //Navigate to Login url
             driver.Navigate().GoToUrl("http://horse-dev.azurewebsites.net/Account/Login?ReturnUrl=%2f");
 
-            //Enter user name using ID
+            //Enter user name using ID 
             driver.FindElement(By.Id("UserName")).SendKeys("hari");
             ////Enter password using ID
             driver.FindElement(By.Id("Password")).SendKeys("123123");
@@ -39,7 +39,10 @@ namespace IC_TimeMaterial
             {
                 Console.WriteLine("Logged in Failes,Test failed!");
             }
-            //create time and material test
+
+
+
+            //Time and Management Module Test
 
 
 
@@ -47,7 +50,7 @@ namespace IC_TimeMaterial
             driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a")).Click();
 
 
-            //click on time and material
+            //click on time and material category
             driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a")).Click();
 
             //click on create new button
