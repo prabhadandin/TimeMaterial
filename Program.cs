@@ -17,10 +17,10 @@ namespace IC_TimeMaterial
             IWebDriver driver = new ChromeDriver();
             //Maximize the browser
             driver.Manage().Window.Maximize();
-            //Navigate to Login url
+            //Launch Login Page
             driver.Navigate().GoToUrl("http://horse-dev.azurewebsites.net/Account/Login?ReturnUrl=%2f");
 
-            //Enter user name using ID 
+            //Enter user name using ID
             driver.FindElement(By.Id("UserName")).SendKeys("hari");
             ////Enter password using ID
             driver.FindElement(By.Id("Password")).SendKeys("123123");
@@ -41,69 +41,56 @@ namespace IC_TimeMaterial
             }
 
 
+            //TIme and Material Test Automation
 
-            //Time and Management Module Test
-
-
-
-            //Click on administration
+            //Click on administration category
             driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a")).Click();
 
 
-            //click on time and material category
+            //Click on time and material Option
             driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a")).Click();
 
-            //click on create new button
+            //Click on create new button
             driver.FindElement(By.XPath("//*[@id='container']/p/a")).Click();
 
-            //Verify the type code drop box
-            IWebElement typecode_dropbox = driver.FindElement(By.Id("TypeCode"));
-            if (typecode_dropbox != null)
-            {
-                driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]")).Click();
+            //Click type code drop box
+            driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]")).Click();
 
                 //Enter code value
                 driver.FindElement(By.Id("Code")).SendKeys("CS0100");
-
-                //Validate Code Value
-                {
-                    string CodeInput = driver.FindElement(By.Id("Code")).GetAttribute("value");
-                    if (CodeInput != null)
-                    {
-                        //Enter description Value
-                        driver.FindElement(By.Id("Description")).SendKeys("ComputerScience");
-                        string DescInput = driver.FindElement(By.Id("Description")).GetAttribute("value");
-                        {
-                            if (DescInput != null)
-                            {
-                                //Enter Price per unit
-                                // driver.FindElement(By.Id("Price")).SendKeys(""+1234);
-
-                                //click save
-                                driver.FindElement(By.Id("SaveButton")).Click();
-
-                                Thread.Sleep(1000);
-
-                            }
-                            else
-                                Console.WriteLine("The Description field is required");
-
-                        }
-                    }
-                    else
-                        Console.WriteLine("The Code Feild is Required..");
-
-                }
+                //Validate  CodeValue
+                 /*string CodeInput = driver.FindElement(By.Id("Code")).GetAttribute("value");
+                   if (CodeInput == null && CodeInput.Length >20)
+                   {
+                     Console.WriteLine("The Code field should not be more than 20 character");
+                    }*/
+                //Enter description Value
+                  driver.FindElement(By.Id("Description")).SendKeys("ComputerScience");
+                //Validate description value 
+                  /*string DesInput = driver.FindElement(By.Id("Description")).GetAttribute("value");
+                  if (DesInput == null )
+                     {
+                       Console.WriteLine("The Description field is required.");
+                     }*/
+            //Enter Price per unit
+            
+             driver.FindElement(By.Id("Price"));
+            driver.FindElement(By.Id("Price")).SendKeys(""+12343);
+            //Select FIle
+            driver.FindElement(By.Id("files")).Click();
+            driver.FindElement(By.Id("files")).SendKeys("");
 
 
-
-            }
+            //click save
+            driver.FindElement(By.Id("SaveButton")).Click();
+            Thread.Sleep(1000);
 
             //Navigate to last page
             driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[3]")).Click();
 
             //Verify record Existing or not
-            if (driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[9]/td[1]")).Text == "CS0100")
+
+            if (driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[9]/td[1]")).Text == "CS0101")
 
 
             {
@@ -111,60 +98,62 @@ namespace IC_TimeMaterial
             }
             else
             {
-                Console.WriteLine("Records not created ,test failed!");
+                Console.WriteLine("Record not created ,test failed!");
             }
-
+            
 
             //Click on EDit button
-            driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[5]/a[1]")).Click();
+            driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[5]/a[1]"));
 
-            //Validate the Url of Edit button
+            //Click the Type code 
+  
+            //driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]")).Click();
+            //driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[2]")).Click();
+            driver.FindElement(By.Id("TycodeCode")).Click();
 
-
-            //Validate the Type code box
-            driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span")).Click();
-
-            driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]")).Click();
 
             //Edit Type code and Validae it
-            driver.FindElement(By.Id("Code")).SendKeys("CS_001");
-            string CodeInputEdit = driver.FindElement(By.Id("Code")).GetAttribute("value");
-            if (CodeInputEdit != null)
+            driver.FindElement(By.Id("Code")).SendKeys("CS0100edit");
+           /* string CodeInputEdit = driver.FindElement(By.Id("Code")).GetAttribute("value");
+            if (CodeInputEdit == null && CodeInputEdit.Length > 20)
             {
-                //Enter description
-                driver.FindElement(By.Id("Description")).SendKeys("ComputerScience001");
-                string DescInputEdit = driver.FindElement(By.Id("Description")).GetAttribute("value");
-                {
-                    if (DescInputEdit != null)
-                    {
-                        //Enter Price per unit
-                        // driver.FindElement(By.Id("Price")).SendKeys("" + 12435);
+                Console.WriteLine("The Code field should not be more than 20 character");
+            }*/
+            //Edit description
+            driver.FindElement(By.Id("Description")).SendKeys("ComputerScience001edit");
+            /*string DesInputEdit = driver.FindElement(By.Id("Description")).GetAttribute("value");
+            if (DesInputEdit == null)
+            {
+                Console.WriteLine("The Description field is required.");
+            }*/
+            //Edit Price per unit
+            driver.FindElement(By.Id("Price")).SendKeys("" + 12435);
+            // Edit Select FIle
+            driver.FindElement(By.Id("files")).Click();
+            driver.FindElement(By.Id("files")).SendKeys("");
 
-                        //click save
-                        driver.FindElement(By.Id("SaveButton")).Click();
+            //Select Download button
+            //driver.FindElement(By.Id("downloadButton")).GetAttribute("Value");
+             driver.FindElement(By.Id("downloadButton")).Click();
+            //click save
+            driver.FindElement(By.Id("SaveButton")).Click();
+            Thread.Sleep(1000);
 
-                        Thread.Sleep(1000);
-                        //navigate to last page
-                        driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[2]")).Click();
+            //navigate to last page
+            driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[2]")).Click();
 
-                        //verify the updated records
-                        if (driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr/td[1]")).Text == "CS_001")
+            //verify the updated records
+            if (driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr/td[1]")).Text == "CS0100edit")
 
-                        {
-                            Console.WriteLine("Record Updated successfully, test passed");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Records not updates,Test failed!");
-                        }
-                    }
-                    else
-                        Console.WriteLine("The Description field is required");
-
-                }
+            {
+                Console.WriteLine("Record Updated successfully, test passed");
             }
             else
-                Console.WriteLine("The Code Feild is Required..");
+            {
+                Console.WriteLine("Records not updated,Test failed!");
+            }
+
+           
             //Click Delete Button
             driver.FindElement(By.XPath("//*[[@id='tmsGrid']/div[3]/table/tbody/tr[6]/td[5]/a[2]")).Click();
 
@@ -182,7 +171,6 @@ namespace IC_TimeMaterial
 
 
                 confirmationAlert.Accept();
-
 
             }
             else

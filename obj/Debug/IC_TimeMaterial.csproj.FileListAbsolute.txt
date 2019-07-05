@@ -1,0 +1,10 @@
+G:\IC_Projects\IC_TimeMaterial\bin\Debug\IC_TimeMaterial.exe.config
+G:\IC_Projects\IC_TimeMaterial\bin\Debug\IC_TimeMaterial.exe
+G:\IC_Projects\IC_TimeMaterial\bin\Debug\IC_TimeMaterial.pdb
+G:\IC_Projects\IC_TimeMaterial\bin\Debug\WebDriver.dll
+G:\IC_Projects\IC_TimeMaterial\bin\Debug\WebDriver.xml
+G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.csprojAssemblyReference.cache
+G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.csproj.CoreCompileInputs.cache
+G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.csproj.CopyComplete
+G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.exe
+G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.pdb
