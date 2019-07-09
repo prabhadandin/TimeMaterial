@@ -49,12 +49,8 @@ namespace IC_TimeMaterial.Pages
 
             //Select FIle
             //WebDriverWait wait = new WebDriverWait(driver, 20);
-            IWebElement uploadfile = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[6]/div/div/div/div"));
-           // uploadfile.Click();
-
+            driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[6]/div/div/div/div"));
             driver.FindElement(By.XPath("//*[@id='files']")).SendKeys("G:/Test.txt");
-           //uploadfile.Click();
-            //uploadfile.SendKeys("{Enter}");
             Thread.Sleep(2000);
             //checked file Successful Upload
             //IWebElement fileuploadsucess = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[6]/div/div/ul/li/span[3]"));
@@ -75,76 +71,87 @@ namespace IC_TimeMaterial.Pages
 
             //Verify record Existing or not
             // driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[9]/td[1]"));//*[@id="tmsGrid"]/div[2]/div/table/thead/tr/th[1]
-            IWebElement table = driver.FindElement(By.XPath("html/body/table/tbody"));
+            // IWebElement table = driver.FindElement(By.XPath("html/body/table/tbody"));
             //To locate rows of table
-            IList<IWebElement> tablerows = table.FindElements(By.TagName("tr"));
+            ////IList<IWebElement> tablerows = table.FindElements(By.TagName("tr"));
             //To locate columns of table
             //IList<IWebElement> tablecols = table.FindElements(By.TagName("td"));
             //Console.WriteLine("Total rows." + tablecols.Count);
 
 
-            Console.WriteLine("Total column." + tablerows.Count);
-            int rowcount = tablerows.Count();
+            //Console.WriteLine("Total column." + tablerows.Count);
+            //int rowcount = tablerows.Count();
             //int colcount = tablecols.Count();
 
-            for (int rowindex = 0;  rowindex <rowcount; rowindex++)
-            {
-                IList<IWebElement> cols_row = tablerows;
-               
-            }
+            // for (int rowindex = 0;  rowindex <rowcount; rowindex++)
+            //{
+            //  IList<IWebElement> cols_row = tablerows;
+
+            //  }
 
             //Click on EDit button
-            driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[5]/a[1]"));
+            Thread.Sleep(2000);
+            driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[5]/a[1]")).Click();
 
-            //Click the Type code 
+
+
+            // driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span")).Click();
+
+            //Edit Type code and Validae 
+           driver.FindElement(By.XPath("//span[@class='k-widget k-dropdown k-header text-box single-line']"));
             
-           // driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]")).Click();
-            //driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[2]")).Click();
-
-
-
-            //Edit Type code and Validae it
-            driver.FindElement(By.Id("Code")).SendKeys("CS0100edit");
-            string CodeInputedit = driver.FindElement(By.Id("Code")).GetAttribute("value");
-            if (CodeInputedit == null && CodeInput.Length > 20)
+            //WebDriverWait wait = new WebDriverWait(driver,10);
+            Thread.Sleep(5000);
+            //driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[2]/div")).SendKeys("12434");
+            Thread.Sleep(2000);
+             //codeedt.SendKeys("CS0100edit");
+            /*string CodeInputedit = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[2]/div")).GetAttribute("value");
+            if (CodeInputedit == null)
             {
                 Console.WriteLine("The Code field is required");
             }
             if (CodeInputedit.Length > 20)
             {
                 Console.WriteLine("The Code field should not be more than 20 character");
-            }
+            }*/
             //Edit description
             driver.FindElement(By.Id("Description")).SendKeys("ComputerScience001edit");
-            //Edit Price per unit
-            driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]")).SendKeys("12435");
-            // Edit Select FIle
-            driver.FindElement(By.Id("files")).Click();
-            driver.FindElement(By.Id("files")).SendKeys("");
+            //Enter Price per unit
+            IWebElement Priceedit = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
+            //Scroll to Price unit to make visible to 
+            Actions actionedit = new Actions(driver);
+            Thread.Sleep(2000);
+            //actionedit.MoveToElement(Price).Perform();
+            //driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]")).SendKeys("23212");
 
+            //Select FIle
+             //IWebElement updadefile = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[6]/div/div/div/div"));
+            // uploadfile.Click()
+            //driver.FindElement(By.XPath("//*[@id='files']")).SendKeys("G:/Test - Copy.txt");
+            //uploadfile.Click();
+            //uploadfile.SendKeys("{Enter}");
+            Thread.Sleep(2000);
+            //checked file Successful Upload
+            //IWebElement fileuploadsucess = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[6]/div/div/ul/li/span[3]"));
             //Select Download button
             //driver.FindElement(By.Id("downloadButton")).GetAttribute("Value");
-            driver.FindElement(By.Id("downloadButton")).Click();
+            // driver.FindElement(By.Id("downloadButton")).Click();
             //click save
-            driver.FindElement(By.Id("SaveButton")).Click();
+           driver.FindElement(By.Id("SaveButton")).Click();
             string DesInputEdit = driver.FindElement(By.Id("Description")).GetAttribute("value");
             if (DesInputEdit == null)
             {
                 Console.WriteLine("The Description field is required.");
             }
 
-            if (DesInput == null)
-            {
-                Console.WriteLine("The Description field is required.");
-            }
-
+           
             Thread.Sleep(1000);
 
             //navigate to last page
             driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[2]")).Click();
 
             //verify the updated records
-            if (driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr/td[1]")).Text == "CS0100edit")
+          /*  if (driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr/td[1]")).Text == "CS0100edit")
 
             {
                 Console.WriteLine("Record Updated successfully, test passed");
@@ -152,33 +159,29 @@ namespace IC_TimeMaterial.Pages
             else
             {
                 Console.WriteLine("Records not updated,Test failed!");
-            }
+            }*/
 
 
-            //Click Delete Button
-            driver.FindElement(By.XPath("//*[[@id='tmsGrid']/div[3]/table/tbody/tr[6]/td[5]/a[2]")).Click();
-
-            string CodeInputdelete = driver.FindElement(By.Id("Code")).GetAttribute("value");
-            string DescInputdelete = driver.FindElement(By.Id("Description")).GetAttribute("value");
-
+            
             // Switch the control of 'driver' to the Alert from main Window
 
-            IAlert confirmationAlert = driver.SwitchTo().Alert();
-
-            String alertText = confirmationAlert.Text;
-            if (alertText == "Ok")
+           
+                //Click Delete Button
+                Thread.Sleep(5000);
+                driver.FindElement(By.LinkText("Delete")).Click();
+                Thread.Sleep(5000);
+                /*string CodeInputdelete = driver.FindElement(By.Id("Code")).GetAttribute("value");
+                string DescInputdelete = driver.FindElement(By.Id("Description")).GetAttribute("value");*/
+            try
             {
-                Console.WriteLine("Alert text is " + confirmationAlert);
-
-
-                confirmationAlert.Accept();
-
+                driver.SwitchTo().Alert().Accept();
+               
             }
-            else
+            catch(UnhandledAlertException args)
             {
-                confirmationAlert.Dismiss();
+                Console.WriteLine("delete records failed!"+args.AlertText);
             }
-
+          
 
         }
 
