@@ -8,3 +8,4 @@ G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.csproj.CoreCompileInput
 G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.csproj.CopyComplete
 G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.exe
 G:\IC_Projects\IC_TimeMaterial\obj\Debug\IC_TimeMaterial.pdb
+G:\IC_Projects\IC_TimeMaterial\bin\Debug\SeleniumExtras.WaitHelpers.dll
