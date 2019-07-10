@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,22 +26,12 @@ namespace IC_TimeMaterial.Pages
             driver.FindElement(By.Id("Password")).SendKeys("123123");
             //Click login using xpath
             driver.FindElement(By.XPath("//*[@id='loginForm']/form/div[3]/input[1]")).Click();
-            String LoggedUrl = driver.Url;
-            if (LoggedUrl == "http://horse-dev.azurewebsites.net/")
-            {
-                Console.WriteLine("Logged in Succesful!,testc Passed");
+           //Validate if the user had logged in succfully
+            IWebElement login = driver.FindElement(By.XPath("//*[@id='logoutForm']/ul/li/a"));
 
-            }
-            else
-            {
-                Console.WriteLine("Logged in Failed!,testc Passed");
-            }
-
+            Assert.That(login.Text, Is.EqualTo("Hello hari!"));
         }
 
-        internal void loginSteps(object driver)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

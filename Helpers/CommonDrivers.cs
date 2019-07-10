@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IC_TimeMaterial.Helpers
 {
-    class CommonDrivers
+    class CommonDriver
     {
         //init webdriver
         public static IWebDriver driver { set; get; }
