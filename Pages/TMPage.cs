@@ -91,6 +91,32 @@ namespace IC_TimeMaterial.Pages
             }
          }
 
+        internal void ValidateTM(IWebDriver driver)
+        {
+            Thread.Sleep(3000);
+            try
+            {
+                while (true)
+                {
+                    for (var i = 1; i <= 10; i++)
+                    {
+                        var textCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[1]")).Text;
+                        Console.WriteLine(textCode);
+                        if (textCode == "hai456")
+                        {
+                            Console.WriteLine("Test passed");
+                            return;
+                        }
+
+                    }
+                    driver.FindElement(By.XPath("//a[@title='Go to the next page']")).Click();
+                }
+            }
+            catch (Exception) {
+                Console.WriteLine("Test Failed");
+            }
+
+        }
 
         public void EdtTM(IWebDriver driver)
         {

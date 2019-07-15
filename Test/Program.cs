@@ -13,40 +13,41 @@ using System.Threading;
 namespace IC_TimeMaterial
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.All)]
     class Program
     {
+        IWebDriver driver;
         static void Main(string[] args)
-        {
-            
-      
+        {              
         }
+        
         [SetUp]
         public void Login()
         {
             //define driver
-            CommonDriver.driver = new ChromeDriver();
+            driver = new ChromeDriver();
 
             //Login action
             LoginPage loginObj = new LoginPage();
-            loginObj.loginSteps(CommonDriver.driver);
+            loginObj.loginSteps(driver);
 
             //Navigate to TM
             HomePage homeObj = new HomePage();
-            homeObj.navigateTM(CommonDriver.driver);
+            homeObj.navigateTM(driver);
 
         }
         [Test]
         public void CreateTM()
         {
             TMPage tmObj = new TMPage();
-            tmObj.CrtTM(CommonDriver.driver);
-
+            //tmObj.CrtTM(driver);
+            tmObj.ValidateTM(driver);
         }
         [Test]
         public void EditTM()
         {
             TMPage tmObj = new TMPage();
-            tmObj.EdtTM(CommonDriver.driver);
+            tmObj.EdtTM(driver);
 
         }
         [Test]
@@ -54,12 +55,12 @@ namespace IC_TimeMaterial
         {
             
             TMPage tmObj = new TMPage();
-            tmObj.delTM(CommonDriver.driver);
+            tmObj.delTM(driver);
         }
         [TearDown]
         public void Finish()
         {
-            CommonDriver.driver.Quit();
+            driver.Quit();
         }
     }
 }
